@@ -1,0 +1,8 @@
+/.project
+node_modules
+.env
+provision/db/migrations.js
+.idea
+cities1000.txt
+codes_*.json
+countries.emoji.json

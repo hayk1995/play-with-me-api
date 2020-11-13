@@ -1,0 +1,11 @@
+{
+  "db": {
+    "db": "mongodb://localhost:27017/reg-user"
+  },
+  "userStatusList": ["pending","active"],
+  "userStatusMap" : {
+    "pending": "pending",
+    "active": "active"
+  },
+  "port": 4040
+}
