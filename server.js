@@ -1,12 +1,10 @@
-require('dotenv').config();
-
 const app = require('./app');
-const config = require('config');
+const appProperties = require("./app-properties");
 
 app.on('error', (err) => {
   console.error('Server error', err);
 });
 
-app.listen(config.port, () => {
-  console.log(`Example app listening at http://localhost:${config.port}`)
-})
+app.listen(appProperties.server.port, () => {
+  console.log(`Example app listening at http://localhost:${appProperties.server.port}`);
+});

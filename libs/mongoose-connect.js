@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const config = require('config');
+
+const appProperties = require("../app-properties");
 
 module.exports = () => {
   const dbConfig = {
@@ -7,11 +8,11 @@ module.exports = () => {
     useNewUrlParser: true
   };
 
-  mongoose.connect(config.get('db.db'), dbConfig);
+  mongoose.connect(appProperties.db.uri, dbConfig);
 
   // Database connection Logs
   mongoose.connection.on('connected', () => {
-    console.log(`Mongoose connected to ${config.get('db.db')}`);
+    console.log(`Mongoose connected to ${appProperties.db.uri}`);
   });
 
   mongoose.connection.on('error', (err) => {

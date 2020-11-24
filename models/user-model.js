@@ -1,5 +1,4 @@
 const Mongoose = require("mongoose");
-const config = require('config');
 const changeRecorder = require('./plugins/change-recorder');
 const passwordHasher = require("./plugins/password-hasher");
 

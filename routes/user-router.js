@@ -1,14 +1,32 @@
-const express = require('express');
-const router = express.Router();
-
-const {registerUser,verifyUser, passwordResetPhone, passwordReset, passwordResetEmail} = require("../services/user-service");
-const {regSchema, verifyUserSchema, passwordResetSchema, passwordResetEmailSchema, passwordResetPhoneSchema} = require("../validations/user-validation");
+const {createUser} = require("../services/user-service");
+const {signUpSchema} = require("../validations/user-validation");
 const {bodyValidator} = require("../validations/helpers");
 
-router.post("/", bodyValidator(regSchema), registerUser);
-router.post("/verify", bodyValidator(verifyUserSchema),  verifyUser);
-router.post("/password/reset/phone", bodyValidator(passwordResetPhoneSchema), passwordResetPhone);
-router.post("/password/reset/email", bodyValidator(passwordResetEmailSchema),passwordResetEmail);
-router.post("/password/reset", bodyValidator(passwordResetSchema), passwordReset);
 
-module.exports = router;
+module.exports = function(app) {
+    // Routes
+    /**
+     * @swagger
+     * /users/sign-up:
+     *  post:
+     *    description: Use to sign up
+     *    consumes:
+     *      - application/json
+     *    parameters:
+     *      - in: body
+     *        name: user
+     *        description: the user to create
+     *        schema:
+     *          type: object
+     *          properties:
+     *            email:
+     *              type: string
+     *            password:
+     *              type: string
+     *
+     *    responses:
+     *      '200':
+     *        description: A successful response
+     */
+    app.post("/sign-up", bodyValidator(signUpSchema), createUser);
+}
