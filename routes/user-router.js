@@ -28,5 +28,5 @@ module.exports = function(app) {
      *      '200':
      *        description: A successful response
      */
-    app.post("/sign-up", bodyValidator(signUpSchema), createUser);
+    app.post("/users/sign-up", bodyValidator(signUpSchema), createUser);
 }
